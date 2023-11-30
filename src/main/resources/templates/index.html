@@ -4,17 +4,20 @@
 <body>
     <div class="container">
         <div class="row">
+            <h1 class="text-center mt-4">Che voglia di pizza....</h1>
             <div class="col">
-                <div href="" class="" th:each="pizza : ${pizze}">
-                    <div class="card" style="width: 18rem;">
-                        <img src="${pizza.foto}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5>[[${pizza.name}]]</h5>
-                            <p class="card-text">[[${pizza.description}]]</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="m-3" th:each="pizza : ${pizze}">
+                        <div class="card" style="width: 18rem;">
+                            <img th:src="${pizza.getFoto()}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5>[[${pizza.getName()}]]</h5>
+                                <p class="card-text">[[${pizza.getDescription()}]]</p>
+                                <h5 th:text="|${#numbers.formatDecimal(pizza.getPrice(), 1, 2)}$|"></h5>
+                                <a th:href="@{/pizza/{pizzaId}(pizzaId=${pizza.getId()})}" class="btn btn-primary">Vedi la pizza</a>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
