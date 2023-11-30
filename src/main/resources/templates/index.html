@@ -7,6 +7,9 @@
             <h1 class="text-center mt-4">Che voglia di pizza....</h1>
             <div class="col">
                 <div class="d-flex flex-wrap justify-content-center">
+                    <div th:if="${pizze.isEmpty()}">
+                        <h1>ma non sono sold out</h1>
+                    </div>
                     <div class="m-3" th:each="pizza : ${pizze}">
                         <div class="card" style="width: 18rem;">
                             <img th:src="${pizza.getFoto()}" class="card-img-top" alt="...">

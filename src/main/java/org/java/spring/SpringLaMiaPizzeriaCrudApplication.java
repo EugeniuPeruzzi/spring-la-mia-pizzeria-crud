@@ -22,7 +22,7 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
         // In questo metodo, vengono eseguite operazioni una volta che l'applicazione è stata avviata
 
         // Crea e salva oggetti Pizza nel database al momento dell'avvio dell'applicazione
-        pizzaService.save(new Pizza("Margherita", "Descrizione 1", "https://picsum.photos/400/400", 9.3));
+    	pizzaService.save(new Pizza("Margherita", "Descrizione 1", "https://picsum.photos/400/400", 9.3));
         pizzaService.save(new Pizza("Pepperoni", "Descrizione 2", "https://picsum.photos/400/400", 10.5));
         pizzaService.save(new Pizza("Siciliana", "Descrizione 3", "https://picsum.photos/400/400", 11.7));
         pizzaService.save(new Pizza("Quattro Stagioni", "Descrizione 4", "https://picsum.photos/400/400", 12.9));
