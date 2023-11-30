@@ -15,25 +15,33 @@ public class MainController {
 
 	@Autowired
 	private PizzaService pizzaService;
-	
-	@GetMapping
+
+	// Questo metodo gestisce le richieste GET sulla radice dell'applicazione
+	@GetMapping("/")
 	public String getPizza(Model model) {
 		
+		// Recupera una lista di oggetti Pizza dal servizio
 		List<Pizza> pizza = pizzaService.findAll();
 		
+		// Aggiunge la lista di pizze al modello per renderla disponibile nella vista
 		model.addAttribute("pizze", pizza);
-		return "index";
 		
+		// Restituisce il nome della vista da visualizzare ("index" in questo caso)
+		return "index";
 	}
 	
+	// Questo metodo gestisce le richieste GET per visualizzare i dettagli di una pizza specifica
 	@GetMapping("/pizza/{id}")
 	public String getPizzaId(Model model,
 			@PathVariable int id) {
 		
+		// Recupera una pizza specifica dal servizio utilizzando l'ID fornito
 		Pizza pizzaId = pizzaService.findById(id);
 		
+		// Aggiunge la pizza al modello per renderla disponibile nella vista
 		model.addAttribute("pizza", pizzaId);
-		return "pizzaShow";
 		
+		// Restituisce il nome della vista da visualizzare ("pizzaShow" in questo caso)
+		return "pizzaShow";
 	}
 }

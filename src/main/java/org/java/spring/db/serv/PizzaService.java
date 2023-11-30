@@ -11,17 +11,20 @@ import org.springframework.stereotype.Service;
 public class PizzaService {
 
 	@Autowired
-	public PizzaRepository pizzaRepository;
-	
+	public PizzaRepository pizzaRepository;  // Iniezione di dipendenza del repository di Pizza
+
+	// Metodo per recuperare tutte le pizze dal repository
 	public List<Pizza> findAll() {
 		return pizzaRepository.findAll();
 	}
+
+	// Metodo per trovare una pizza per ID dal repository
 	public Pizza findById(int id) {
-		
 		return pizzaRepository.findById(id).get();
 	}
+
+	// Metodo per salvare una pizza nel repository
 	public void save(Pizza pizza) {
-		
 		pizzaRepository.save(pizza);
 	}
 }

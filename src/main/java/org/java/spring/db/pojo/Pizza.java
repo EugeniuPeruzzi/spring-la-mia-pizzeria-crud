@@ -11,17 +11,21 @@ public class Pizza {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private String name;
+	private int id;  // Identificatore univoco della pizza
+
+	private String name;  // Nome della pizza
 	
 	@Column(columnDefinition = "TEXT")
-	private String description;
-	private String foto;
-	private double price;
+	private String description;  // Descrizione della pizza
 	
+	private String foto;  // URL dell'immagine della pizza
+	
+	private double price;  // Prezzo della pizza
+	
+	// Costruttore vuoto richiesto da JPA
 	public Pizza() {}
 	
+	// Costruttore per creare una nuova pizza con informazioni iniziali
 	public Pizza(String name, String description, String foto, double price) {
 		setName(name);
 		setDescription(description);
@@ -69,6 +73,7 @@ public class Pizza {
 		this.price = price;
 	}
 	
+	// Metodo toString per la rappresentazione testuale dell'oggetto Pizza
 	@Override
 	public String toString() {
 	    return 
@@ -78,7 +83,4 @@ public class Pizza {
 	        "foto= " + getFoto() + '\'' +
 	        "price= " + getPrice() ;
 	}
-	
-	
-
 }
