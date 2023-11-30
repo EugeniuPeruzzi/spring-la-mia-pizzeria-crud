@@ -1,0 +1,24 @@
+<!-- Head html -->
+<div th:replace="frags/frags :: headFragment"></div>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div href="" class="" th:each="pizza : ${pizze}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="${pizza.foto}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>[[${pizza.name}]]</h5>
+                            <p class="card-text">[[${pizza.description}]]</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

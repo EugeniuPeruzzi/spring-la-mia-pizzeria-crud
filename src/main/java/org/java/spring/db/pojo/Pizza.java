@@ -18,12 +18,15 @@ public class Pizza {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	private String foto;
-	private float price;
+	private double price;
 	
 	public Pizza() {}
 	
-	public Pizza(String name, String description, String foto, float price) {
-		
+	public Pizza(String name, String description, String foto, double price) {
+		setName(name);
+		setDescription(description);
+		setFoto(foto);
+		setPrice(price);
 	}
 
 	public int getId() {
@@ -58,11 +61,11 @@ public class Pizza {
 		this.foto = foto;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
