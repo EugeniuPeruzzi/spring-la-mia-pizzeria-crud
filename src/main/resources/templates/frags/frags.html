@@ -10,3 +10,14 @@
         <title>Document</title>
     </head>
 </div>
+
+
+<div th:fragment="searchFrag">
+    <form method="get">
+        <div class="d-flex justify-content-center">
+            <input class="form-control" type="text" th:value="${p}" aria-label="default input example" name="p"
+                style="width: 50%;">
+            <button class="btn btn-primary ms-2" type="submit">Cerca</button>
+        </div>
+    </form>
+</div>

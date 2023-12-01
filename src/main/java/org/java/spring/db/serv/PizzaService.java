@@ -27,4 +27,9 @@ public class PizzaService {
 	public void save(Pizza pizza) {
 		pizzaRepository.save(pizza);
 	}
+
+	public List<Pizza> findByName(String query) {
+		return pizzaRepository.findByNameContainingIgnoreCase(query);
+	
+	}
 }

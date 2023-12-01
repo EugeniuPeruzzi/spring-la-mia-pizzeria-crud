@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -17,16 +18,17 @@ public class MainController {
 	private PizzaService pizzaService;
 
 	// Questo metodo gestisce le richieste GET sulla radice dell'applicazione
-	@GetMapping("/")
-	public String getPizza(Model model) {
+	@GetMapping
+	public String getPizza(Model model,
+			@RequestParam(required = false) String p) {
 		
-		// Recupera una lista di oggetti Pizza dal servizio
-		List<Pizza> pizza = pizzaService.findAll();
+		List<Pizza> pizzas = p == null  
+					? pizzaService.findAll()
+					: pizzaService.findByName(p);
 		
-		// Aggiunge la lista di pizze al modello per renderla disponibile nella vista
-		model.addAttribute("pizze", pizza);
+		model.addAttribute("pizze", pizzas);
+		model.addAttribute("p", p == null ? "" : p);
 		
-		// Restituisce il nome della vista da visualizzare ("index" in questo caso)
 		return "index";
 	}
 	

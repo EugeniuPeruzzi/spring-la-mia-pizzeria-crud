@@ -5,6 +5,7 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center mt-4">Che voglia di pizza....</h1>
+            <div th:replace="frags/frags :: searchFrag"></div>
             <div class="col">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div th:if="${pizze.isEmpty()}">
