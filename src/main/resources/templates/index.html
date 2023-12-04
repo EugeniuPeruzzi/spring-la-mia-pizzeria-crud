@@ -6,6 +6,11 @@
         <div class="row">
             <h1 class="text-center mt-4">Che voglia di pizza....</h1>
             <div th:replace="frags/frags :: searchFrag"></div>
+            <div class="col-2 ">
+                <a href="/pizza/create">
+                    <button class="btn btn-warning ms-2" type="button">Add pizzza</button>
+                </a>
+            </div>
             <div class="col">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div th:if="${pizze.isEmpty()}">
