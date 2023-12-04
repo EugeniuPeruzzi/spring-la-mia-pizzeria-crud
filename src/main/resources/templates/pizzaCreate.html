@@ -1,9 +1,38 @@
 <!-- Head html -->
 <div th:replace="frags/frags :: headFragment"></div>
 
+<!-- name descrition foto price -->
 
 <body>
-    <h1>Aggiungi una nuova pizza</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form th:object="${pizza}" method="POST">
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <lable for="title" class="form-label">Nome</lable>
+                        <input type="text" id="title" th:field="*{name}" class="form-control">
+                    </div>
+                    <!-- Descrozione -->
+                    <div class="mb-3">
+                        <lable for="description" class="form-label">Description</lable>
+                        <input type="text" id="description" th:field="*{description}" class="form-control">
+                    </div>
+                    <!-- Foto -->
+                    <div class="mb-3">
+                        <lable for="foto" class="form-label">Foto indirizzo url</lable>
+                        <input type="text" id="foto" th:field="*{foto}" class="form-control">
+                    </div>
+                    <!-- Prezzo -->
+                    <div class="mb-3">
+                        <lable for="price" class="form-label">Prezzo</lable>
+                        <input type="text" id="price" th:field="*{price}" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary" value="STORE">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

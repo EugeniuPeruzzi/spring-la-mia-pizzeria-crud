@@ -59,7 +59,7 @@ public class MainController {
 		
 		Pizza pizza = new Pizza();
 		
-		model.addAttribute("book", pizza);
+		model.addAttribute("pizza", pizza);
 		
 		return "pizzaCreate";
 	}
@@ -72,14 +72,14 @@ public class MainController {
 		if (bindingResult.hasErrors()) {
 			
 			System.out.println(bindingResult);
-			model.addAttribute("book", pizza);
+			model.addAttribute("pizza", pizza);
 			return "pizzaCreate";
 		}
 		try {
 			pizzaService.save(pizza);
 		} catch(Exception e) {
 			bindingResult.addError(new ObjectError("isbn", "ISBN must be unique"));
-			model.addAttribute("book", pizza);
+			model.addAttribute("pizza", pizza);
 			return "pizzaCreate";
 		}
 		
