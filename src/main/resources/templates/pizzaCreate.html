@@ -6,6 +6,9 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="text-center my-5">
+                <h1>Aggiungi una nuova pizza</h1>
+            </div>
             <div class="col">
                 <form th:object="${pizza}" method="POST">
                     <!-- Name -->
@@ -18,7 +21,8 @@
                     <!-- Descrozione -->
                     <div class="mb-3">
                         <lable for="description" class="form-label">Description</lable>
-                        <input type="text" id="description" th:field="*{description}" class="form-control">
+                        <textarea type="text" id="description" th:field="*{description}"
+                            class="form-control"></textarea>
                         <div th:replace="frags/frags :: errorDiv('description')"></div>
                     </div>
                     <!-- Foto -->

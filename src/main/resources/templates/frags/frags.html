@@ -23,9 +23,7 @@
 </div>
 
 <div th:fragment="errorDiv(field)" th:if="${#fields.hasErrors(field)}">
-    <ul>
-        <li th:each="err : ${#fields.errors(field)}">
-            [[${err}]]
-        </li>
-    </ul>
+    <div class="alert alert-danger mt-3" role="alert" th:each="err : ${#fields.errors(field)}">
+        [[${err}]]
+    </div>
 </div>

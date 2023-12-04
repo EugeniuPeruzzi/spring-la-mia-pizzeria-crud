@@ -1,6 +1,7 @@
 package org.java.spring.db.pojo;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,21 +19,21 @@ public class Pizza {
 	private int id;  // Identificatore univoco della pizza
 	
 	
-	@Length(min = 1, max = 30, message = "Il nome deve contenere da 1 a 30 carratteri")
-	@NotEmpty(message = "Il nome non può essere vuoto")
+	@Length(min = 1, max = 30, message = "Il nome della pizza deve contenere tra 1 e 30 caratteri.")
+	@NotEmpty(message = "Il campo nome della pizza non può essere vuoto.")
 	private String name;  // Nome della pizza
 	
 	@Column(columnDefinition = "TEXT")
-	@Length(min = 1, max = 200, message = "La descrizione deve contenere da 1 a 500 carratteri")
-	@NotEmpty(message = "La descrizione non può essere vuoto")
+	@Length(min = 1, max = 200, message = "La descrizione della pizza deve contenere tra 1 e 200 caratteri.")
+	@NotEmpty(message = "Il campo descrizione della pizza non può essere vuoto.")
 	private String description;  // Descrizione della pizza
 	
-	@NotEmpty(message = "La foto non può essere vuoto")
+	@URL(protocol = "https")
+	@NotEmpty(message = "Il campo foto della pizza non può essere vuoto.")
 	private String foto;  // URL dell'immagine della pizza
 	
-	@PositiveOrZero
+	@PositiveOrZero(message = "Il prezzo della pizza deve essere maggiore o uguale a 0.")
 	private double price;  // Prezzo della pizza
-	
 	// Costruttore vuoto richiesto da JPA
 	public Pizza() {}
 	
