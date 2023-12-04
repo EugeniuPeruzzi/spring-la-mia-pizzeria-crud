@@ -1,10 +1,14 @@
 package org.java.spring.db.pojo;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Pizza {
@@ -12,14 +16,21 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;  // Identificatore univoco della pizza
-
+	
+	
+	@Length(min = 1, max = 30, message = "Il nome deve contenere da 1 a 30 carratteri")
+	@NotEmpty(message = "Il nome non può essere vuoto")
 	private String name;  // Nome della pizza
 	
 	@Column(columnDefinition = "TEXT")
+	@Length(min = 1, max = 200, message = "La descrizione deve contenere da 1 a 500 carratteri")
+	@NotEmpty(message = "La descrizione non può essere vuoto")
 	private String description;  // Descrizione della pizza
 	
+	@NotEmpty(message = "La foto non può essere vuoto")
 	private String foto;  // URL dell'immagine della pizza
 	
+	@PositiveOrZero
 	private double price;  // Prezzo della pizza
 	
 	// Costruttore vuoto richiesto da JPA

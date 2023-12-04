@@ -21,3 +21,11 @@
         </div>
     </form>
 </div>
+
+<div th:fragment="errorDiv(field)" th:if="${#fields.hasErrors(field)}">
+    <ul>
+        <li th:each="err : ${#fields.errors(field)}">
+            [[${err}]]
+        </li>
+    </ul>
+</div>
