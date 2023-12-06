@@ -53,29 +53,56 @@ public class MainController {
 	}
 	
 	
+	// Questo metodo gestisce le richieste GET a "/pizza/create"
+	// Crea un nuovo oggetto Pizza e lo aggiunge al modello
 	@GetMapping("/pizza/create")
 	public String createPizza(Model model) {
-		
-		Pizza pizza = new Pizza();
-		
-		model.addAttribute("pizza", pizza);
-		
-		return "pizzaCreate";
+	    Pizza pizza = new Pizza();
+	    model.addAttribute("pizza", pizza);
+	    return "pizzaCreate";
 	}
 
+	// Questo metodo gestisce le richieste POST a "/pizza/create"
+	// Valida l'oggetto Pizza, lo salva se non ci sono errori, altrimenti ritorna alla pagina di creazione
 	@PostMapping("/pizza/create")
-    public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+	public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+	    if (bindingResult.hasErrors()) {
+	        System.out.println(bindingResult);
+	        model.addAttribute("pizza", pizza);
+	        return "pizzaCreate";
+	    }
+	    pizzaService.save(pizza);
+	    return "redirect:/";
+	}
 
-        if (bindingResult.hasErrors()) {
+	// Questo metodo gestisce le richieste GET a "/pizza/edit/{id}"
+	// Recupera la pizza con l'ID specificato e la aggiunge al modello
+	@GetMapping("/pizza/edit/{id}")
+	public String editPizza (Model model, @PathVariable int id) {
+	    Pizza pizza = pizzaService.findById(id);
+	    model.addAttribute("pizza", pizza);
+	    return "pizzaCreate";
+	    
+	}
 
-            System.out.println(bindingResult);
+	// Questo metodo gestisce le richieste POST a "/pizza/edit/{id}"
+	// Valida l'oggetto Pizza e lo passa al metodo storePizza per il salvataggio
+	@PostMapping("/pizza/edit/{id}")
+	public String updatePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+	    // Il metodo storePizza viene riutilizzato per salvare la pizza modificata
+	    // Se ci sono errori di validazione, l'utente verrà reindirizzato alla pagina di creazione con i dettagli dell'errore
+	    return storePizza(model, pizza, bindingResult);
+	}
 
-            model.addAttribute("pizza", pizza);
-            return "pizzaCreate";
-        }
-
-        pizzaService.save(pizza);
-
-        return "redirect:/";
-    }
+	// Questo metodo gestisce le richieste POST a "/pizza/delete/{id}"
+	// Trova la pizza con l'ID specificato e la elimina
+	@PostMapping("/pizza/delete/{id}")
+	public String deletePizza(@PathVariable int id) {
+	    // Trova la pizza con l'ID specificato
+	    Pizza pizza = pizzaService.findById(id);
+	    // Elimina la pizza trovata
+	    pizzaService.delete(pizza);
+	    // Reindirizza l'utente alla pagina principale
+	    return "redirect:/";
+	}
 }
