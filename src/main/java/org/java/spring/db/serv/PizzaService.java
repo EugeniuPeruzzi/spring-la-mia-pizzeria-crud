@@ -32,4 +32,13 @@ public class PizzaService {
 		return pizzaRepository.findByNameContainingIgnoreCase(query);
 	
 	}
+	
+	public void delete(Pizza pizza) {
+		
+		pizzaRepository.delete(pizza);
+	}
+	public void deleteById(int id) {
+		
+		pizzaRepository.deleteById(id);
+	}
 }
