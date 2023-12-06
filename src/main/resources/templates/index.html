@@ -40,8 +40,8 @@
                                 <!-- Link per modificare la pizza -->
                                 <a th:href="@{/pizza/edit/{pizzaId}(pizzaId=${pizza.getId()})}"
                                     class="btn btn-sm btn-warning">Modifica</a>
-
-                                <form class="d-inline-block"
+								<!-- Form per cancellare  -->
+                                <form class="d-inline-block" onsubmit="return confirm('Are you sure?')"
                                     th:action="@{/pizza/delete/{pizzaId}(pizzaId=${pizza.getId()})}" method="POST">
 
                                     <button class="btn btn-sm btn-danger">Delete</button>
